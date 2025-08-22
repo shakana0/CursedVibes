@@ -6,6 +6,8 @@
 *.sln.docstates
 
 # Ignore build output
+Debug/
+debug/
 bin/
 obj/
 
@@ -13,6 +15,8 @@ obj/
 *.nupkg
 packages/
 *.snupkg
+*.nuget.g.props
+*.nuget.g.targets
 
 # Ignore logs and temp files
 *.log

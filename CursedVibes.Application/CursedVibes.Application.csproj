@@ -1,6 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.0.1" />
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
+    <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.8" />
+    <PackageReference Include="NSwag.AspNetCore" Version="14.5.0" />
+    <PackageReference Include="NSwag.Generation.AspNetCore" Version="14.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Characters\Commands\DeleteCharacter\" />
+    <Folder Include="Characters\Commands\UpdateCharacter\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CursedVibes.Domain\CursedVibes.Domain.csproj" />
   </ItemGroup>
 
