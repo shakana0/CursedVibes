@@ -18,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{74436598-7027-4CDE-8776-0F597C7DFB95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,9 +92,30 @@ Global
 		{0586E238-E074-4C1A-A973-9D69B5F75FF7}.Release|x64.Build.0 = Release|Any CPU
 		{0586E238-E074-4C1A-A973-9D69B5F75FF7}.Release|x86.ActiveCfg = Release|Any CPU
 		{0586E238-E074-4C1A-A973-9D69B5F75FF7}.Release|x86.Build.0 = Release|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Debug|x64.Build.0 = Debug|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Debug|x86.Build.0 = Debug|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Debug|x86.Deploy.0 = Debug|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Release|x64.ActiveCfg = Release|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Release|x64.Build.0 = Release|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Release|x64.Deploy.0 = Release|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Release|x86.ActiveCfg = Release|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Release|x86.Build.0 = Release|Any CPU
+		{74436598-7027-4CDE-8776-0F597C7DFB95}.Release|x86.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{74436598-7027-4CDE-8776-0F597C7DFB95} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DA223CDB-714B-4071-8AD9-FFD374593DE5}
