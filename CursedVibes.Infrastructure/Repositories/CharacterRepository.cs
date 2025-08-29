@@ -51,10 +51,10 @@ namespace CursedVibes.Infrastructure.Repositories
         }
         public async Task DeleteAsync(int id, CancellationToken cancellationToken)
         {
-            var character = await GetByIdAsync(id, cancellationToken);
-            if (character != null)
+            var existingCharacter = await GetByIdAsync(id, cancellationToken);
+            if (existingCharacter != null)
             {
-                _context.Characters.Remove(character);
+                _context.Characters.Remove(existingCharacter);
                 await _context.SaveChangesAsync(cancellationToken);
             }
         }
