@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using CursedVibes.Application.Characters.Dtos;
 using CursedVibes.Application.Characters.Queries.GetCharacter;
+using CursedVibes.Application.Exceptions;
 using CursedVibes.Domain.Entities;
 using CursedVibes.Domain.Interfaces;
 using CursedVibes.Tests.Mocks;
 using CursedVibes.Tests.TestUtils;
 using Moq;
-
 
 namespace CursedVibes.Tests.Application.CharacterTests.Queries;
 
@@ -40,5 +40,20 @@ public class GetCharacterByIdHandlerTests
         //Assert
         Assert.NotNull(result);
         result.ShouldBeEqualTo(newCharacter);
+    }
+
+    [Fact]
+    public async Task Handle_WhenCharacterDoesNotExists_ThrowException()
+    {
+        var query = new GetCharacterByIdQuery(55);
+
+        var handler = new GetCharacterByIdHandler(_characterRepository, new Mock<IMapper>().Object);
+
+        var exception = await Assert.ThrowsAsync<NotFoundException>(async () =>
+        {
+            await handler.Handle(query, CancellationToken.None);
+        });
+
+        Assert.Equal($"Character with id {query.Id} not found", exception.Message);
     }
 }

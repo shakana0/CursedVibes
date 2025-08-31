@@ -1,10 +1,14 @@
 ﻿using Asp.Versioning;
 using Azure.Identity;
-using CursedVibes.Domain.Interfaces;
+using CursedVibes.Application.Behaviors;
+using CursedVibes.Application.Characters.Commands.CreateCharacter;
 using CursedVibes.Application.Characters.Queries.GetCharacter;
 using CursedVibes.Application.Infrastructure.AutoMapper;
+using CursedVibes.Domain.Interfaces;
 using CursedVibes.Infrastructure.Context;
 using CursedVibes.Infrastructure.Repositories;
+using FluentValidation;
+using MediatR;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -71,6 +75,10 @@ builder.Services.AddAutoMapper(cfg =>
     cfg.LicenseKey = licenseKey;
     cfg.AddMaps(typeof(AutoMapperProfile).Assembly);
 });
+
+//FluentValidation
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+builder.Services.AddValidatorsFromAssemblyContaining<CreateCharacterCommandValidator>();
 
 
 // API Versioning

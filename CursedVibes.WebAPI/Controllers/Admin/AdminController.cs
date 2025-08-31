@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using CursedVibes.Application.Characters.Commands.CreateCharacter;
 using CursedVibes.Application.Characters.Dtos;
 using CursedVibes.Application.Characters.Queries.GetCharacter;
 using MediatR;
@@ -30,6 +31,14 @@ namespace CursedVibes.WebAPI.Controllers.Admin
                 return NotFound();
 
             return Ok(result);
+        }
+
+        [HttpPost("Character")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> CreateCharacter(CreateCharacterCommand command)
+        {
+            await _mediator.Send(command);
+            return NoContent();
         }
     }
 }

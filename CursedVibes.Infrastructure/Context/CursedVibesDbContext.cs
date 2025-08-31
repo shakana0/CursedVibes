@@ -21,6 +21,8 @@ namespace CursedVibes.Infrastructure.Context
             {
                 entity.ToTable("Character", "dbo");
                 entity.HasKey(c => c.Id);
+                entity.Property(c => c.Id)
+                        .ValueGeneratedOnAdd(); //säger att Id genereras av databasen
 
                 //Define relationships
                 entity.OwnsOne(c => c.Stats, stats =>

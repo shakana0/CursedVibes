@@ -12,10 +12,15 @@ namespace CursedVibes.Domain.Entities
         public CharacterStats Stats { get; private set; } = new CharacterStats();
 
         public Character() { }
-
-        public Character(int id, string name, CharacterStats stats, int curseLevel, string vibeType, string backStory)
+        internal Character(int id, string name, int curseLevel, string vibeType, string backStory, CharacterStats stats)
+            : this(name, curseLevel, vibeType, backStory, stats)
         {
             Id = id;
+        }
+
+
+        public Character(string name, int curseLevel, string vibeType, string backStory, CharacterStats stats)
+        {
             Name = name;
             Stats = stats;
             CurseLevel = curseLevel;

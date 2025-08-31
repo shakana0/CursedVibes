@@ -1,4 +1,5 @@
 ﻿
+using CursedVibes.Application.Characters.Commands.CreateCharacter;
 using CursedVibes.Application.Characters.Dtos;
 using CursedVibes.Domain.Entities;
 using CursedVibes.Domain.ValueObjects;
@@ -18,9 +19,34 @@ namespace CursedVibes.Tests.Mocks
         {
             stats ??= new CharacterStats(10, 10, 10, 10);
 
-            var character = new Character(id, name, stats, curseLevel, vibeType, backStory);
+            var character = new Character(id, name, curseLevel, vibeType, backStory, stats);
 
             return character;
+        }
+
+        public static CreateCharacterCommand CreateCharacterCommand(
+            string? name = "Test",
+            int curseLevel = 50,
+            string? vibeType = "Chill",
+            string? backStory = "Raised by code and caffeine.",
+            int strength = 10,
+            int agility = 10,
+            int intelligence = 10,
+            int luck = 10
+            )
+        {
+
+            return new CreateCharacterCommand
+            {
+                Name = name ?? string.Empty,
+                CurseLevel = curseLevel,
+                VibeType = vibeType ?? string.Empty,
+                BackStory = backStory ?? string.Empty,
+                Strength = strength,
+                Agility = agility,
+                Intelligence = intelligence,
+                Luck = luck
+            };
         }
 
         public static List<Character> CreateCharacterList(int count = 3)
@@ -57,7 +83,6 @@ namespace CursedVibes.Tests.Mocks
                 Luck = c.Stats.Luck
             };
         }
-
     }
 
 }
