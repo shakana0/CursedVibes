@@ -23,16 +23,6 @@ namespace CursedVibes.Tests.Mocks
             return Task.CompletedTask;
         }
 
-        public Task<Character?> UpdateAsync(int id, Character character, CancellationToken cancellationToken)
-        {
-            var index = _characters.FindIndex(c => c.Id == id);
-            if (index == -1)
-                return Task.FromResult<Character?>(null);
-
-            _characters[index] = character;
-            return Task.FromResult<Character?>(_characters[index]);
-        }
-
         public Task DeleteAsync(int id, CancellationToken cancellationToken)
         {
             var character = _characters.FirstOrDefault(c => c.Id == id);
