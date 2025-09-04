@@ -1,37 +1,52 @@
 ﻿
-using CursedVibes.Application.Characters.Commands.CreateCharacter;
+using CursedVibes.Application.Characters.Commands.UpdateCharacter;
 using CursedVibes.Tests.Mocks;
 using FluentValidation.TestHelper;
 
-namespace CursedVibes.Tests.Application.CharacterTests.Commands.CreateCharacter
+namespace CursedVibes.Tests.Application.CharacterTests.Commands.UpdateCharacte
 {
-    public class CreateCharacterCommandValidatorTests
+    public class UpdateCharacterCommandValidatorTests
     {
-        private readonly CreateCharacterCommandValidator _validator;
+        private readonly UpdateCharacterCommandValidator _validator;
 
-        public CreateCharacterCommandValidatorTests()
+        public UpdateCharacterCommandValidatorTests()
         {
-            _validator = new CreateCharacterCommandValidator();
+            _validator = new UpdateCharacterCommandValidator();
         }
 
         [Fact]
-        public void Validate_GivenValidCreateCharacterCommand_ReturnsNoValidationError()
+        public void Validate_GivenValidUpdateCharacterCommand_ReturnsNoValidationErrors()
         {
-            var command = TestDataGenerator.CreateCharacterCommand();
+            var command = TestDataGenerator.UpdateCharacterCommand();
+
+            var result = _validator.TestValidate(command);
+            result.ShouldNotHaveAnyValidationErrors();
+        }
+
+        [Theory]
+        [InlineData(1, true)]
+        [InlineData(0, false)]
+        [InlineData(-1, false)]
+        public void Validate_Id_WhenValueIsValidOrInvalid_ReturnsCorrectValidationError(int id, bool expectedIsValid)
+        {
+            var command = TestDataGenerator.UpdateCharacterCommand(id: id);
             var result = _validator.TestValidate(command);
 
-            result.ShouldNotHaveAnyValidationErrors();
+            if (expectedIsValid)
+                result.ShouldNotHaveValidationErrorFor(c => c.Id);
+            else
+                result.ShouldHaveValidationErrorFor(c => c.Id);
         }
 
         [Theory]
         [InlineData("Test", true)]
         [InlineData("", false)]
-        [InlineData("      ", false)]
+        [InlineData("     ", false)]
         [InlineData("xy", false)]
         [InlineData(null, false)]
         public void Validate_Name_WhenValueIsValidOrInvalid_ReturnsCorrectValidationError(string? name, bool expectedIsValid)
         {
-            var command = TestDataGenerator.CreateCharacterCommand(name: name);
+            var command = TestDataGenerator.UpdateCharacterCommand(name: name);
             var result = _validator.TestValidate(command);
 
             if (expectedIsValid)
@@ -43,11 +58,11 @@ namespace CursedVibes.Tests.Application.CharacterTests.Commands.CreateCharacter
         [Theory]
         [InlineData("Test", true)]
         [InlineData("", false)]
-        [InlineData("  ", false)]
+        [InlineData(" ", false)]
         [InlineData(null, false)]
         public void Validate_VibeType_WhenValueIsValidOrInvalid_ReturnsCorrectValidationError(string? vibeType, bool expectedIsValid)
         {
-            var command = TestDataGenerator.CreateCharacterCommand(vibeType: vibeType);
+            var command = TestDataGenerator.UpdateCharacterCommand(vibeType: vibeType);
             var result = _validator.TestValidate(command);
 
             if (expectedIsValid)
@@ -59,12 +74,12 @@ namespace CursedVibes.Tests.Application.CharacterTests.Commands.CreateCharacter
         [Theory]
         [InlineData("Back story test", true)]
         [InlineData("", false)]
-        [InlineData(" ", false)]
+        [InlineData("   ", false)]
         [InlineData("xy", false)]
         [InlineData(null, false)]
         public void Validate_BackStory_WhenValueIsValidOrInvalid_ReturnsCorrectValidationError(string? backStory, bool expectedIsValid)
         {
-            var command = TestDataGenerator.CreateCharacterCommand(backStory: backStory);
+            var command = TestDataGenerator.UpdateCharacterCommand(backStory: backStory);
             var result = _validator.TestValidate(command);
 
             if (expectedIsValid)
@@ -79,7 +94,7 @@ namespace CursedVibes.Tests.Application.CharacterTests.Commands.CreateCharacter
         [InlineData(101, false)]
         public void Validate_CurseLevel_WhenValueIsValidOrInvalid_ReturnsCorrectValidationError(int curseLevel, bool expectedIsValid)
         {
-            var command = TestDataGenerator.CreateCharacterCommand(curseLevel: curseLevel);
+            var command = TestDataGenerator.UpdateCharacterCommand(curseLevel: curseLevel);
             var result = _validator.TestValidate(command);
 
             if (expectedIsValid)
@@ -95,7 +110,7 @@ namespace CursedVibes.Tests.Application.CharacterTests.Commands.CreateCharacter
         [InlineData(101, false)]
         public void Validate_Stats_WhenValueIsValidOrInvalid_ReturnsCorrectValidationError(int value, bool expectedIsValid)
         {
-            var command = TestDataGenerator.CreateCharacterCommand(strength: value, agility: value, intelligence: value, luck: value);
+            var command = TestDataGenerator.UpdateCharacterCommand(strength: value, agility: value, intelligence: value, luck: value);
             var result = _validator.TestValidate(command);
 
             if (expectedIsValid)

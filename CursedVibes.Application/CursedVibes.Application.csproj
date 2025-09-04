@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Characters\Commands\DeleteCharacter\" />
-    <Folder Include="Characters\Commands\UpdateCharacter\" />
   </ItemGroup>
 
   <ItemGroup>

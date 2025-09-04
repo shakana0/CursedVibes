@@ -1,12 +1,16 @@
 ﻿
 using FluentValidation;
 
-namespace CursedVibes.Application.Characters.Commands.CreateCharacter
+namespace CursedVibes.Application.Characters.Commands.UpdateCharacter
 {
-    public class CreateCharacterCommandValidator : AbstractValidator<CreateCharacterCommand>
+    public class UpdateCharacterCommandValidator : AbstractValidator<UpdateCharacterCommand>
     {
-        public CreateCharacterCommandValidator()
+        public UpdateCharacterCommandValidator()
         {
+            RuleFor(c => c.Id)
+            .GreaterThan(0)
+            .WithMessage("Character ID must be greater than zero.");
+
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Name is required.")
                 .Must(name => !string.IsNullOrWhiteSpace(name)).WithMessage("Name cannot be just whitespace.")

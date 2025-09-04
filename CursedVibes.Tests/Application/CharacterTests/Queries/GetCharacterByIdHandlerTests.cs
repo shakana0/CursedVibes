@@ -20,7 +20,7 @@ public class GetCharacterByIdHandlerTests
     }
 
     [Fact]
-    public async Task Handle_WhenCharacterExists_ReturnsCorrectDto()
+    public async Task Handle_GivenValidGetCharacterByIdQuery_ReturnsCharacterDto()
     {
         //Arrange
         var newCharacter = TestDataGenerator.CreateCharacter(id: 4, name: "test 4");
@@ -43,7 +43,7 @@ public class GetCharacterByIdHandlerTests
     }
 
     [Fact]
-    public async Task Handle_WhenCharacterDoesNotExists_ThrowException()
+    public async Task Handle_GivenNonExistentCharacterId_ThrowsNotFoundException()
     {
         var query = new GetCharacterByIdQuery(55);
 

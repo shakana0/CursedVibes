@@ -17,18 +17,20 @@ namespace CursedVibes.Tests.Mocks
             return Task.FromResult(character);
         }
 
-        public Task CreateAsync(Character character, CancellationToken cancellationToken) { 
+        public Task CreateAsync(Character character, CancellationToken cancellationToken)
+        {
             _characters.Add(character);
             return Task.CompletedTask;
         }
 
-        public Task UpdateAsync(int id, Character character, CancellationToken cancellationToken)
+        public Task<Character?> UpdateAsync(int id, Character character, CancellationToken cancellationToken)
         {
             var index = _characters.FindIndex(c => c.Id == id);
-            if (index != -1)
-                _characters[index] = character;
+            if (index == -1)
+                return Task.FromResult<Character?>(null);
 
-            return Task.CompletedTask;
+            _characters[index] = character;
+            return Task.FromResult<Character?>(_characters[index]);
         }
 
         public Task DeleteAsync(int id, CancellationToken cancellationToken)
@@ -37,6 +39,11 @@ namespace CursedVibes.Tests.Mocks
             if (character != null)
                 _characters.Remove(character);
 
+            return Task.CompletedTask;
+        }
+
+        public Task SaveChangesAsync(CancellationToken cancellationToken)
+        {
             return Task.CompletedTask;
         }
     }

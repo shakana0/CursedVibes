@@ -9,10 +9,10 @@ using Moq;
 
 namespace CursedVibes.Tests.Application.CharacterTests.Commands.CreateCharacter
 {
-    public class CreateCharacterCommandHandlerTests
+    public class CreateCharacterHandlerTests
     {
         [Fact]
-        public async Task Handle_WhenCommandIsValid_CreatesCharacter()
+        public async Task Handle_GivenValidCreateCharacterCommand_CallsRepositoryMethodsWithExpectedInput()
         {
             var command = TestDataGenerator.CreateCharacterCommand();
 
@@ -26,7 +26,7 @@ namespace CursedVibes.Tests.Application.CharacterTests.Commands.CreateCharacter
                     backStory: c.BackStory,
                     stats: new CharacterStats(c.Strength, c.Agility, c.Intelligence, c.Luck)
                 ));
-            
+
             var repositoryMock = new Mock<ICharacterRepository>();
             repositoryMock
                 .Setup(r => r.CreateAsync(It.IsAny<Character>(), It.IsAny<CancellationToken>()))

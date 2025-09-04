@@ -1,5 +1,6 @@
 ﻿
 using CursedVibes.Application.Characters.Commands.CreateCharacter;
+using CursedVibes.Application.Characters.Commands.UpdateCharacter;
 using CursedVibes.Application.Characters.Dtos;
 using CursedVibes.Domain.Entities;
 using CursedVibes.Domain.ValueObjects;
@@ -38,6 +39,32 @@ namespace CursedVibes.Tests.Mocks
 
             return new CreateCharacterCommand
             {
+                Name = name ?? string.Empty,
+                CurseLevel = curseLevel,
+                VibeType = vibeType ?? string.Empty,
+                BackStory = backStory ?? string.Empty,
+                Strength = strength,
+                Agility = agility,
+                Intelligence = intelligence,
+                Luck = luck
+            };
+        }
+
+        public static UpdateCharacterCommand UpdateCharacterCommand(
+            int id = 1,
+            string? name = "Test",
+            int curseLevel = 50,
+            string? vibeType = "Chill",
+            string? backStory = "Raised by code and caffeine.",
+            int strength = 10,
+            int agility = 10,
+            int intelligence = 10,
+            int luck = 10
+            )
+        {
+            return new UpdateCharacterCommand
+            {
+                Id = id,
                 Name = name ?? string.Empty,
                 CurseLevel = curseLevel,
                 VibeType = vibeType ?? string.Empty,

@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using CursedVibes.Application.Characters.Commands.CreateCharacter;
+using CursedVibes.Application.Characters.Commands.UpdateCharacter;
 using CursedVibes.Application.Characters.Dtos;
 using CursedVibes.Application.Characters.Queries.GetCharacter;
 using MediatR;
@@ -39,6 +40,24 @@ namespace CursedVibes.WebAPI.Controllers.Admin
         {
             await _mediator.Send(command);
             return NoContent();
+        }
+
+        [HttpPut("Character/{id}")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<CharacterDto>> UpdateCharacter(int id, UpdateCharacterCommand command)
+        {
+            if (id != command.Id)
+                return BadRequest("ID mismatch");
+
+            var result = await _mediator.Send(command);
+
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
         }
     }
 }
