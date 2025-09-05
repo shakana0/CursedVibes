@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Characters\Commands\DeleteCharacter\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CursedVibes.Domain\CursedVibes.Domain.csproj" />
   </ItemGroup>
 

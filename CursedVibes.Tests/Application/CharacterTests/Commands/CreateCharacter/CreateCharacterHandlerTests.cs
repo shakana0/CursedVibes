@@ -36,6 +36,7 @@ namespace CursedVibes.Tests.Application.CharacterTests.Commands.CreateCharacter
             var result = await handler.Handle(command, CancellationToken.None);
 
             Assert.Equal(MediatR.Unit.Value, result);
+
             repositoryMock.Verify(r => r.CreateAsync(It.Is<Character>(c =>
                c.Name == command.Name &&
                c.CurseLevel == command.CurseLevel &&

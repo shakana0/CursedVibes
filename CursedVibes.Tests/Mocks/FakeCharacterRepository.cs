@@ -23,13 +23,16 @@ namespace CursedVibes.Tests.Mocks
             return Task.CompletedTask;
         }
 
-        public Task DeleteAsync(int id, CancellationToken cancellationToken)
+        public Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
         {
             var character = _characters.FirstOrDefault(c => c.Id == id);
-            if (character != null)
-                _characters.Remove(character);
+            if (character == null)
+            {
+                return Task.FromResult(false);
+            }
+            _characters.Remove(character);
 
-            return Task.CompletedTask;
+            return Task.FromResult(true);
         }
 
         public Task SaveChangesAsync(CancellationToken cancellationToken)

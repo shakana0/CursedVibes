@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using CursedVibes.Application.Characters.Commands.CreateCharacter;
+using CursedVibes.Application.Characters.Commands.DeleteCharacter;
 using CursedVibes.Application.Characters.Commands.UpdateCharacter;
 using CursedVibes.Application.Characters.Dtos;
 using CursedVibes.Application.Characters.Queries.GetCharacter;
@@ -58,6 +59,14 @@ namespace CursedVibes.WebAPI.Controllers.Admin
                 return NotFound();
 
             return Ok(result);
+        }
+
+        [HttpDelete("Character/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult<DeleteCharacterCommand>> DeleteCharacter(int id)
+        {
+            var result = await _mediator.Send(new DeleteCharacterCommand(id));
+            return NoContent();
         }
     }
 }

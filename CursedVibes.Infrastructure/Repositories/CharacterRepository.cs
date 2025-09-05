@@ -30,14 +30,17 @@ namespace CursedVibes.Infrastructure.Repositories
             await _context.Characters.AddAsync(character);
             await _context.SaveChangesAsync(cancellationToken);
         }
-        public async Task DeleteAsync(int id, CancellationToken cancellationToken)
+        public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken)
         {
             var existingCharacter = await GetByIdAsync(id, cancellationToken);
-            if (existingCharacter != null)
+            if (existingCharacter == null)
             {
-                _context.Characters.Remove(existingCharacter);
-                await _context.SaveChangesAsync(cancellationToken);
+                return false;
             }
+            _context.Characters.Remove(existingCharacter);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return true;
         }
         public async Task SaveChangesAsync(CancellationToken cancellationToken)
         {
