@@ -1,5 +1,4 @@
-﻿
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace CursedVibes.Application.Characters.Commands.DeleteCharacter
 {

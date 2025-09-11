@@ -1,5 +1,4 @@
-﻿
-using CursedVibes.Application.Characters.Dtos;
+﻿using CursedVibes.Application.Characters.Dtos;
 using MediatR;
 
 namespace CursedVibes.Application.Characters.Commands.UpdateCharacter
@@ -15,6 +14,5 @@ namespace CursedVibes.Application.Characters.Commands.UpdateCharacter
         public int Agility { get; set; }
         public int Intelligence { get; set; }
         public int Luck { get; set; }
-
     }
 }

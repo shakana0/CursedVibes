@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using CursedVibes.Domain.Entities;
 using CursedVibes.Domain.Interfaces;
 using MediatR;
@@ -20,6 +19,8 @@ namespace CursedVibes.Application.Characters.Commands.CreateCharacter
         public async Task<Unit> Handle(CreateCharacterCommand request, CancellationToken cancellationToken)
         {
             var character = _mapper.Map<Character>(request);
+            character.UpdateVibeType(request.VibeType);
+
             await _characterRepository.CreateAsync(character, cancellationToken);
 
             return Unit.Value;

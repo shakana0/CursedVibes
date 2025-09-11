@@ -1,4 +1,4 @@
-﻿
+﻿using CursedVibes.Application.Common.Validation;
 using FluentValidation;
 
 namespace CursedVibes.Application.Characters.Commands.CreateCharacter
@@ -11,11 +11,11 @@ namespace CursedVibes.Application.Characters.Commands.CreateCharacter
                 .NotEmpty().WithMessage("Name is required.")
                 .Must(name => !string.IsNullOrWhiteSpace(name)).WithMessage("Name cannot be just whitespace.")
                 .MinimumLength(3).WithMessage("Name must be at least 3 characters long.");
-
+            
             RuleFor(x => x.VibeType)
-                .NotEmpty().WithMessage("VibeType is required.")
-                .Must(vibeType => !string.IsNullOrWhiteSpace(vibeType)).WithMessage("VibeType cannot be just whitespace.")
-                .MinimumLength(3).WithMessage("Name must be at least 3 characters long.");
+                      .NotEmpty().WithMessage("VibeType is required.")
+                      .Must(VibeTypeValidator.IsValidVibeType)
+                      .WithMessage("VibeType must contain only valid values from the enum.");
 
             RuleFor(x => x.BackStory)
                 .NotEmpty().WithMessage("BackStory is required.")

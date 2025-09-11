@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using CursedVibes.Application.Characters.Dtos;
 using CursedVibes.Application.Exceptions;
 using CursedVibes.Domain.Interfaces;

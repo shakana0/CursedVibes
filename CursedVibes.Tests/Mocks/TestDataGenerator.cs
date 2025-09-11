@@ -1,9 +1,9 @@
-﻿
-using CursedVibes.Application.Characters.Commands.CreateCharacter;
+﻿using CursedVibes.Application.Characters.Commands.CreateCharacter;
 using CursedVibes.Application.Characters.Commands.UpdateCharacter;
 using CursedVibes.Application.Characters.Dtos;
 using CursedVibes.Domain.Entities;
 using CursedVibes.Domain.ValueObjects;
+using static CursedVibes.Domain.Enums.VibeTypeFilter;
 
 namespace CursedVibes.Tests.Mocks
 {
@@ -79,15 +79,16 @@ namespace CursedVibes.Tests.Mocks
         public static List<Character> CreateCharacterList(int count = 3)
         {
             var list = new List<Character>();
-            var random = new Random();
-            int number = random.Next(10, 101);
+
             for (int i = 1; i <= count; i++)
             {
+                var vibe = i % 2 == 0 ? VibeTypeEnum.Chaotic : VibeTypeEnum.Chill;
+
                 list.Add(CreateCharacter(
                     id: i,
                     name: $"Character {i}",
-                    curseLevel: number,
-                    vibeType: "Chill",
+                    curseLevel: 10,
+                    vibeType: vibe.ToString(),
                     backStory: $"Backstory for Character {i}",
                     stats: new CharacterStats(i * 5, i * 3, i * 4, i * 2)
                 ));
@@ -111,5 +112,4 @@ namespace CursedVibes.Tests.Mocks
             };
         }
     }
-
 }

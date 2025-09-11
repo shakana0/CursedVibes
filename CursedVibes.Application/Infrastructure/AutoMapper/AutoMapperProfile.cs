@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using CursedVibes.Application.Characters.Commands.CreateCharacter;
 using CursedVibes.Application.Characters.Dtos;
+using CursedVibes.Application.Characters.Queries.SearchCharacters;
+using CursedVibes.Domain.Characters.Filters;
+using CursedVibes.Domain.Characters.Helpers;
 using CursedVibes.Domain.Entities;
 using CursedVibes.Domain.ValueObjects;
 
@@ -24,6 +27,9 @@ namespace CursedVibes.Application.Infrastructure.AutoMapper
                     src.BackStory,
                     new CharacterStats(src.Strength, src.Agility, src.Intelligence, src.Luck)
                 ));
+
+            CreateMap<SearchCharactersQuery, CharacterSearchFilter>()
+                    .ForMember(dest => dest.VibeType, opt => opt.MapFrom(src => VibeParser.Parse(src.VibeType)));
         }
     }
 }

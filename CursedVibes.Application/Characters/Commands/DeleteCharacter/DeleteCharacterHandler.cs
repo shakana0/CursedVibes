@@ -1,5 +1,4 @@
-﻿
-using CursedVibes.Application.Exceptions;
+﻿using CursedVibes.Application.Exceptions;
 using CursedVibes.Domain.Interfaces;
 using MediatR;
 
@@ -17,7 +16,7 @@ namespace CursedVibes.Application.Characters.Commands.DeleteCharacter
         public async Task<Unit> Handle(DeleteCharacterCommand command, CancellationToken cancellationToken)
         {
             var character = await _characterRepository.DeleteAsync(command.Id, cancellationToken);
-            if (!character) 
+            if (!character)
             {
                 throw new NotFoundException("Character", $"{command.Id}");
             }

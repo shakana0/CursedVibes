@@ -4,6 +4,7 @@ using CursedVibes.Application.Characters.Commands.DeleteCharacter;
 using CursedVibes.Application.Characters.Commands.UpdateCharacter;
 using CursedVibes.Application.Characters.Dtos;
 using CursedVibes.Application.Characters.Queries.GetCharacter;
+using CursedVibes.Application.Characters.Queries.SearchCharacters;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -68,5 +69,16 @@ namespace CursedVibes.WebAPI.Controllers.Admin
             var result = await _mediator.Send(new DeleteCharacterCommand(id));
             return NoContent();
         }
+
+        [HttpGet("Character/search")]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<CharacterSearchResult>> SearchCharacters([FromQuery] SearchCharactersQuery searchParam)
+        {
+            var result = await _mediator.Send(searchParam);
+            return Ok(result);
+        }
+
     }
 }

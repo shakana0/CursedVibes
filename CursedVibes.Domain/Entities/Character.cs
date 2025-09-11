@@ -1,4 +1,5 @@
-﻿using CursedVibes.Domain.ValueObjects;
+﻿using CursedVibes.Domain.Characters.Helpers;
+using CursedVibes.Domain.ValueObjects;
 
 namespace CursedVibes.Domain.Entities
 {
@@ -28,12 +29,12 @@ namespace CursedVibes.Domain.Entities
             BackStory = backStory;
         }
 
-        public void UpdateName(string newName)
+        public void UpdateName(string name)
         {
-            if (string.IsNullOrWhiteSpace(newName))
+            if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Name cannot be empty.");
 
-            Name = newName;
+            Name = name;
         }
 
         public void UpdateCurseLevel(int curseLevel)
@@ -47,7 +48,9 @@ namespace CursedVibes.Domain.Entities
         {
             if (string.IsNullOrEmpty(vibeType))
                 throw new ArgumentException("Vibe type cannot be empty.");
-            VibeType = vibeType;
+           
+            var normalized = VibeParser.NormalizeVibeTypeString(vibeType);
+            VibeType = normalized;
         }
 
         public void UpdateBackStory(string backStory)

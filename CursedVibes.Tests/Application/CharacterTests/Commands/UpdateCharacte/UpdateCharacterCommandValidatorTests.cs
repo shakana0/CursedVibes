@@ -56,9 +56,17 @@ namespace CursedVibes.Tests.Application.CharacterTests.Commands.UpdateCharacte
         }
 
         [Theory]
-        [InlineData("Test", true)]
+        [InlineData("Brutal", true)]
+        [InlineData("Brutal,,", true)]
+        [InlineData("Mystic,Stoic,Divine", true)]
+        [InlineData("  Brutal  ,  MystIC  ", true)]
+        [InlineData("Mystic,,Stoic", true)]
+        [InlineData("Brutal, Test", false)]
+        [InlineData("Test", false)]
+        [InlineData("Mystic,Test,Unknown", false)]
+        [InlineData("Mysticc", false)]
         [InlineData("", false)]
-        [InlineData(" ", false)]
+        [InlineData("   ", false)]
         [InlineData(null, false)]
         public void Validate_VibeType_WhenValueIsValidOrInvalid_ReturnsCorrectValidationError(string? vibeType, bool expectedIsValid)
         {

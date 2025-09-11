@@ -7,6 +7,7 @@ using CursedVibes.Application.Infrastructure.AutoMapper;
 using CursedVibes.Domain.Interfaces;
 using CursedVibes.Infrastructure.Context;
 using CursedVibes.Infrastructure.Repositories;
+using CursedVibes.WebAPI.Extensions;
 using FluentValidation;
 using MediatR;
 using Microsoft.Data.SqlClient;
@@ -15,6 +16,7 @@ using Microsoft.OpenApi.Models;
 
 string licenseKey = Environment.GetEnvironmentVariable("LUCKYPENNY_LICENSE_KEY")
     ?? throw new InvalidOperationException("License key for MediatR and Automapper is missing.");
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuration
@@ -122,6 +124,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseValidationExceptionHandler();
+app.UseRouting();
 app.UseCors("AllowFrontend");
 app.UseAuthorization();
 app.MapControllers();

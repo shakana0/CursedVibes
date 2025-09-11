@@ -1,5 +1,4 @@
-﻿
-namespace CursedVibes.Application.Exceptions
+﻿namespace CursedVibes.Application.Exceptions
 {
     public class NotFoundException : Exception
     {

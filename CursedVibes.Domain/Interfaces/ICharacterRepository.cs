@@ -1,4 +1,5 @@
-﻿using CursedVibes.Domain.Entities;
+﻿using CursedVibes.Domain.Characters.Filters;
+using CursedVibes.Domain.Entities;
 
 namespace CursedVibes.Domain.Interfaces
 {
@@ -9,5 +10,7 @@ namespace CursedVibes.Domain.Interfaces
         Task CreateAsync(Character character, CancellationToken cancellationToken);
         Task<bool> DeleteAsync(int id, CancellationToken cancellationToken);
         Task SaveChangesAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<Character>> SearchAsync(CharacterSearchFilter searchParams, CancellationToken cancellationToken);
+        Task<int> CountAsync(CharacterSearchFilter searchParams, CancellationToken cancellationToken);
     }
 }
