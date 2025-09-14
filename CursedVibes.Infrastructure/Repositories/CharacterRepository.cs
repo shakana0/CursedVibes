@@ -69,6 +69,5 @@ namespace CursedVibes.Infrastructure.Repositories
 
             return await result.CountAsync(cancellationToken);
         }
-
     }
 }
