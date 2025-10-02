@@ -22,7 +22,7 @@ namespace CursedVibes.WebAPI.Controllers.Admin
             _mediator = mediator;
         }
 
-        [HttpGet("Character/{id}")]
+        [HttpGet("character/{id}")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -36,7 +36,7 @@ namespace CursedVibes.WebAPI.Controllers.Admin
             return Ok(result);
         }
 
-        [HttpPost("Character")]
+        [HttpPost("character")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> CreateCharacter(CreateCharacterCommand command)
         {
@@ -44,7 +44,7 @@ namespace CursedVibes.WebAPI.Controllers.Admin
             return NoContent();
         }
 
-        [HttpPut("Character/{id}")]
+        [HttpPut("character/{id}")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -62,7 +62,7 @@ namespace CursedVibes.WebAPI.Controllers.Admin
             return Ok(result);
         }
 
-        [HttpDelete("Character/{id}")]
+        [HttpDelete("character/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult<DeleteCharacterCommand>> DeleteCharacter(int id)
         {
@@ -70,7 +70,7 @@ namespace CursedVibes.WebAPI.Controllers.Admin
             return NoContent();
         }
 
-        [HttpGet("Character/search")]
+        [HttpGet("character/search")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
