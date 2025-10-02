@@ -30,6 +30,8 @@ namespace CursedVibes.Application.Infrastructure.AutoMapper
 
             CreateMap<SearchCharactersQuery, CharacterSearchFilter>()
                     .ForMember(dest => dest.VibeType, opt => opt.MapFrom(src => VibeParser.Parse(src.VibeType)));
+
+            CreateMap<Scene, SceneDto>();
         }
     }
 }
