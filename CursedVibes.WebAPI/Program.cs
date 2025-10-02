@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using Azure.Identity;
+using Azure.Storage.Blobs;
 using CursedVibes.Application.Behaviors;
 using CursedVibes.Application.Characters.Commands.CreateCharacter;
 using CursedVibes.Application.Characters.Queries.GetCharacter;
@@ -62,7 +63,19 @@ builder.Services.AddDbContext<CursedVibesDbContext>(options =>
     options.UseSqlServer(sqlConnection);
 });
 
+//Blob Storage
+builder.Services.AddSingleton(sp =>
+{
+    var sceneContainerUrl = sp.GetRequiredService<IConfiguration>()["BlobStorage:SceneContainerUrl"]
+        ?? throw new ArgumentNullException("SceneContainerUrl", "SceneContainerUrl is missing in configuration.");
+    var credential = new DefaultAzureCredential();
+    return new BlobContainerClient(new Uri(sceneContainerUrl), credential);
+});
+
+
+//Repositories
 builder.Services.AddScoped<ICharacterRepository, CharacterRepository>();
+builder.Services.AddScoped<ISceneRepository, BlobSceneRepository>();
 
 // MediatR
 builder.Services.AddMediatR(cfg =>
