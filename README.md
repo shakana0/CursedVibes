@@ -8,7 +8,7 @@ Currently under development ⚙️
 ## 🌌 Background  
 **CursedVibes API** serves as the foundation for a narrative-driven game experience.  
 It supports CRUD and search operations **characters** and secure **scene retrieval** from **Azure Blob Storage**. 
-The project follows Clean Architecture principles to keep the codebase modular, maintainable, and easy to extend as the story grows.
+The project follows **Clean Architecture** principles to keep the codebase modular, maintainable, and easy to extend as the story grows.
 The API powers the frontend companion, **CursedVibesRealm**, built with Next.js and TypeScript
 
 ---
