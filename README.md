@@ -34,10 +34,15 @@ The API powers the frontend companion, **CursedVibesRealm**, built with Next.js 
 
 Run the API locally:  
 ```bash
+dotnet restore
+
+dotnet build
+
 dotnet run --project WebAPI
 
 The API will be available at:
 👉 https://localhost:54916/swagger
+```
 
 ## 🧪 Testing
 To run tests:
