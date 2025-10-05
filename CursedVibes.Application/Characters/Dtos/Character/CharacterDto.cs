@@ -1,4 +1,4 @@
-﻿namespace CursedVibes.Application.Characters.Dtos
+﻿namespace CursedVibes.Application.Characters.Dtos.Character
 {
     public class CharacterDto
     {
