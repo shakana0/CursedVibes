@@ -1,4 +1,4 @@
-﻿namespace CursedVibes.Application.Characters.Dtos.Scene
+﻿namespace CursedVibes.Application.Scenes.Dtos.Scene
 {
     public class SceneChoicesDto
     {
