@@ -1,5 +1,5 @@
 ﻿using Asp.Versioning;
-using CursedVibes.Application.Characters.Dtos;
+using CursedVibes.Application.Scenes.Dtos.Scene;
 using CursedVibes.Application.Scenes.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
