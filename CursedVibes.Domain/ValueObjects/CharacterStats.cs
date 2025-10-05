@@ -53,7 +53,7 @@
         }
 
         // Value equality
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is not CharacterStats other) return false;
             return Strength == other.Strength &&
