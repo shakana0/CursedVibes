@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CursedVibes.Application.Characters.Dtos;
+using CursedVibes.Application.Characters.Dtos.Character;
 using CursedVibes.Domain.Characters.Filters;
 using CursedVibes.Domain.Interfaces;
 using MediatR;

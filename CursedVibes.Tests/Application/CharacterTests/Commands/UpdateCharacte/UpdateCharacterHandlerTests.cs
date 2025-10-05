@@ -1,7 +1,7 @@
 ﻿
 using AutoMapper;
 using CursedVibes.Application.Characters.Commands.UpdateCharacter;
-using CursedVibes.Application.Characters.Dtos;
+using CursedVibes.Application.Characters.Dtos.Character;
 using CursedVibes.Application.Exceptions;
 using CursedVibes.Domain.Entities;
 using CursedVibes.Domain.Interfaces;

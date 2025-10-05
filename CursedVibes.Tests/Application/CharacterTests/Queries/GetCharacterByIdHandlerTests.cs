@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CursedVibes.Application.Characters.Dtos;
+using CursedVibes.Application.Characters.Dtos.Character;
 using CursedVibes.Application.Characters.Queries.GetCharacter;
 using CursedVibes.Application.Exceptions;
 using CursedVibes.Domain.Entities;

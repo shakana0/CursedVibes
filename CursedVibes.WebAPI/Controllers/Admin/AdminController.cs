@@ -2,7 +2,7 @@
 using CursedVibes.Application.Characters.Commands.CreateCharacter;
 using CursedVibes.Application.Characters.Commands.DeleteCharacter;
 using CursedVibes.Application.Characters.Commands.UpdateCharacter;
-using CursedVibes.Application.Characters.Dtos;
+using CursedVibes.Application.Characters.Dtos.Character;
 using CursedVibes.Application.Characters.Queries.GetCharacter;
 using CursedVibes.Application.Characters.Queries.SearchCharacters;
 using MediatR;

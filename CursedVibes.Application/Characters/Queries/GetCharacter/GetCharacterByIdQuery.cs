@@ -1,4 +1,4 @@
-﻿using CursedVibes.Application.Characters.Dtos;
+﻿using CursedVibes.Application.Characters.Dtos.Character;
 using MediatR;
 
 namespace CursedVibes.Application.Characters.Queries.GetCharacter

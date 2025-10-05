@@ -1,4 +1,4 @@
-﻿using CursedVibes.Application.Characters.Dtos;
+﻿using CursedVibes.Application.Characters.Dtos.Character;
 
 namespace CursedVibes.Application.Characters.Queries.SearchCharacters
 {

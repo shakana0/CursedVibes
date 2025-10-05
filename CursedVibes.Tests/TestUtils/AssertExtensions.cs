@@ -1,5 +1,5 @@
 ﻿using CursedVibes.Domain.Entities;
-using CursedVibes.Application.Characters.Dtos;
+using CursedVibes.Application.Characters.Dtos.Character;
 
 namespace CursedVibes.Tests.TestUtils
 {

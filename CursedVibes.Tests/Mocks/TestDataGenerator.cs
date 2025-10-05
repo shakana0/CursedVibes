@@ -1,6 +1,6 @@
 ﻿using CursedVibes.Application.Characters.Commands.CreateCharacter;
 using CursedVibes.Application.Characters.Commands.UpdateCharacter;
-using CursedVibes.Application.Characters.Dtos;
+using CursedVibes.Application.Characters.Dtos.Character;
 using CursedVibes.Domain.Entities;
 using CursedVibes.Domain.ValueObjects;
 using static CursedVibes.Domain.Enums.VibeTypeFilter;
