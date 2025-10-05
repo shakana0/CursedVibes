@@ -1,4 +1,4 @@
-﻿using CursedVibes.Application.Characters.Dtos;
+﻿using CursedVibes.Application.Scenes.Dtos.Scene;
 using MediatR;
 
 namespace CursedVibes.Application.Scenes.Queries
