@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CursedVibes.Application.Characters.Dtos;
+using CursedVibes.Application.Scenes.Dtos.Scene;
 using CursedVibes.Domain.Entities;
 using CursedVibes.Domain.Interfaces;
 using MediatR;
@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace CursedVibes.Application.Scenes.Queries
 {
-    public class GetSceneByIdHandler: IRequestHandler<GetSceneByIdQuery, SceneDto>
+    public class GetSceneByIdHandler : IRequestHandler<GetSceneByIdQuery, SceneDto>
     {
         private readonly ISceneRepository _sceneRepository;
         private readonly IMapper _mapper;
@@ -32,7 +32,6 @@ namespace CursedVibes.Application.Scenes.Queries
 
             if (scene == null)
                 throw new InvalidDataException($"Scene '{query.SceneId}' could not be deserialized.");
-
             return _mapper.Map<SceneDto>(scene);
         }
 
