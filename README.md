@@ -29,7 +29,12 @@ The API powers the frontend companion, **CursedVibesRealm**, built with Next.js 
 | **EF Core InMemory** | Enables lightweight integration testing of repositories in the Infrastructure layer |
 
 ---
+## 🧪 API Playground (Swagger UI)
+A visual overview of all available endpoints. Fully testable via Swagger for smooth development and debugging.
 
+<img src="./assets/swagger.jpeg" width="400" alt="Screenshot of endpoints in Swagger" />
+
+---
 ## 🚀 Getting Started  
 
 Run the API locally:  
