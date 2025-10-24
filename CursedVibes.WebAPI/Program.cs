@@ -15,18 +15,25 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
-string licenseKey = Environment.GetEnvironmentVariable("LUCKYPENNY_LICENSE_KEY")
-    ?? throw new InvalidOperationException("License key for MediatR and Automapper is missing.");
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuration
+// Load secrets from Azure Key Vault
+builder.Configuration.AddAzureKeyVault(
+    new Uri($"https://luckypenny-license-key.vault.azure.net/"),
+    new DefaultAzureCredential());
+
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 builder.Configuration.AddEnvironmentVariables();
 
 // Logging
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
+
+// Read secret from config
+string licenseKey = builder.Configuration["LicenseKey"]
+    ?? throw new InvalidOperationException("License key for MediatR and Automapper is missing.");
 
 // Services
 builder.Services.AddControllers();
