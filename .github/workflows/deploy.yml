@@ -24,7 +24,7 @@ jobs:
       - name: Publish WebAPI
         run: dotnet publish ./CursedVibes.WebAPI/CursedVibes.WebAPI.csproj --configuration Release
 
-      - name: Verify actual publish directory
+      - name: Verify publish directory
         run: |
           echo "Checking if publish folder exists..."
           if [ -d "./CursedVibes.WebAPI/bin/Release/net9.0/publish" ]; then
@@ -35,6 +35,11 @@ jobs:
             exit 1
           fi
 
+      - name: Zip publish folder
+        run: |
+          cd ./CursedVibes.WebAPI/bin/Release/net9.0
+          zip -r publish.zip ./publish
+
       - name: Run tests
         run: dotnet test ./CursedVibes.Tests/CursedVibes.Tests.csproj --configuration Release --verbosity detailed
 
@@ -43,9 +48,9 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy using Azure CLI
+      - name: Deploy using ZIP
         run: |
-          az webapp deploy --name cursedvibes-webapi \
-                           --resource-group BackendDev-EU-RG \
-                           --src-path ./CursedVibes.WebAPI/bin/Release/net9.0/publish \
-                           --type zip
+          az webapp deployment source config-zip \
+            --name cursedvibes-webapi \
+            --resource-group BackendDev-EU-RG \
+            --src ./CursedVibes.WebAPI/bin/Release/net9.0/publish.zip
