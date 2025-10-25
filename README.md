@@ -1,6 +1,7 @@
 # 🕯️ CursedVibes API
-The backend powering an interactive storytelling experience — mysterious, emotional, and evolving.  
+![CI/CD](https://github.com/shakana0/CursedVibes/actions/workflows/deploy.yml/badge.svg)
 
+The backend powering an interactive storytelling experience — mysterious, emotional, and evolving.  
 Currently under development ⚙️  
 
 ---
@@ -29,6 +30,25 @@ The API powers the frontend companion, **CursedVibesRealm**, built with Next.js 
 | **FluentValidation** | Provides structured and expressive validation for models |
 | **xUnit & Moq** | Used for unit testing and mocking dependencies in the Application layer |
 | **EF Core InMemory** | Enables lightweight integration testing of repositories in the Infrastructure layer |
+
+---
+## 🔁 CI/CD Pipeline  
+
+This project uses **GitHub Actions** for automated build, test, and deployment to **Azure App Service**.
+
+### ⚙️ Workflow Overview
+- **Trigger:** Runs on every push to `main`  
+- **Steps:**  
+  1. Checkout code  
+  2. Setup .NET 9 SDK  
+  3. Restore dependencies  
+  4. Build and publish WebAPI  
+  5. Run unit tests  
+  6. Zip publish artefact  
+  7. Deploy to Azure via `az webapp deployment source config-zip`
+
+**Azure Target:** ☁️  
+- Deployment target: **Azure App Service**
 
 ---
 ## 🧪 API Playground (Swagger UI)
