@@ -21,11 +21,11 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build project
-        run: dotnet build --configuration Release
+      - name: Publish WebAPI
+        run: dotnet publish ./CursedVibes.WebAPI/CursedVibes.WebAPI.csproj --configuration Release --output ./publish
 
       - name: Run tests
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test ./CursedVibes.Tests/CursedVibes.Tests.csproj --no-build --verbosity normal
 
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v2
@@ -33,4 +33,4 @@ jobs:
           app-name: cursedvibes-webapi
           slot-name: production
           publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
-          package: ./CursedVibes.WebAPI/bin/Release/net9.0
+          package: ./publish
