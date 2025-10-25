@@ -20,6 +20,7 @@ The API powers the frontend companion, **CursedVibesRealm**, built with Next.js 
 | **ASP.NET Core WebAPI** | Robust and scalable framework for building RESTful APIs |
 | **Azure Blob Storage** | Secure and efficient storage for media and story scenes |
 | **Azure SQL Database** | Reliable cloud-based data persistence |
+| **Azure Key Vault** | Securely stores and manages secrets, keys, and connection strings |
 | **Entra ID (Azure AD)** | Authentication and access control |
 | **Entity Framework Core** | Simplifies database operations through ORM |
 | **MediatR & CQRS** | Implements clean CQRS architecture and decoupled request handling |
