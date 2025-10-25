@@ -25,7 +25,7 @@ jobs:
         run: dotnet publish ./CursedVibes.WebAPI/CursedVibes.WebAPI.csproj --configuration Release --output ./publish
 
       - name: Run tests
-        run: dotnet test ./CursedVibes.Tests/CursedVibes.Tests.csproj --no-build --verbosity normal
+        run: dotnet test ./CursedVibes.Tests/CursedVibes.Tests.csproj --configuration Release --verbosity normal
 
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v2
