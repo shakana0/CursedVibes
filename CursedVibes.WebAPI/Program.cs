@@ -14,7 +14,7 @@ using MediatR;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,8 +32,7 @@ builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
 // Read secret from config
-string licenseKey = builder.Configuration["LicenseKey"]
-    ?? throw new InvalidOperationException("License key for MediatR and Automapper is missing.");
+string licenseKey = builder.Configuration["LicenseKey"] ?? "dev-license";
 
 // Services
 builder.Services.AddControllers();
@@ -133,12 +132,20 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Middleware
-if (app.Environment.IsDevelopment())
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedProto
+});
+
+app.UseHttpsRedirection();
+
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "CursedVibes API v1");
+        options.RoutePrefix = string.Empty;
     });
     Console.WriteLine("Swagger UI available at: https://localhost:54916/swagger");
 }
