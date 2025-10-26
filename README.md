@@ -61,6 +61,23 @@ Workflows:
 - `.github/workflows/test.yml`: Runs on `dev`, tests only
 - `.github/workflows/deploy.yml`: Runs on `main`, full CI/CD
 ---
+## 🏗️ Clean Architecture Overview
+A visual representation of the system’s layered structure — from the Web API down to the Domain and Infrastructure layers.
+
+<img src="./assets/CursedVibed-Diagram.png" width="500" alt="Clean Architecture layers showing Web API, Application, Domain, Infrastructure, Tests, and CI/CD pipeline" />
+
+It illustrates how each layer interacts according to the Clean Architecture principles, ensuring a clear separation of concerns and testability.
+
+---
+## 🧩 Character Domain Model (ER Diagram)
+
+A visual representation of the Character entity and its related value objects within the domain layer.
+
+<img src="./assets/character-erdiagram.png" width="400" alt="ER diagram showing Character entity with value object Stats" />
+
+It shows how the core game logic — including stats like Strength, Agility, Intelligence, and Luck — is structured in the database and modeled according to DDD Aggregate principles.
+
+---
 ## 🧪 API Playground (Swagger UI)
 A visual overview of all available endpoints. Fully testable via Swagger for smooth development and debugging.
 
