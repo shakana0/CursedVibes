@@ -75,7 +75,8 @@ A visual representation of the Character entity and its related value objects wi
 
 <img src="./assets/character-erdiagram.png" width="400" alt="ER diagram showing Character entity with value object Stats" />
 
-It shows how the core game logic — including stats like Strength, Agility, Intelligence, and Luck — is structured in the database and modeled according to DDD Aggregate principles.
+It shows how the core game logic - including stats like Strength, Agility, Intelligence, and Luck - is structured in the database and modeled according to DDD Aggregate principles.
+The table is currently standalone but will be linked to SCENE and USER in future iterations - as part of a larger narrative data model.
 
 ---
 ## 🧪 API Playground (Swagger UI)
