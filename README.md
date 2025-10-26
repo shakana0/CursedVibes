@@ -1,7 +1,8 @@
 # 🕯️ CursedVibes API
 ![CI/CD](https://github.com/shakana0/CursedVibes/actions/workflows/deploy.yml/badge.svg)
 
-The backend powering an interactive storytelling experience — mysterious, emotional, and evolving.  
+The backend powering an interactive storytelling experience - mysterious, emotional, and evolving.  
+
 Currently under development ⚙️  
 
 ---
@@ -50,6 +51,15 @@ This project uses **GitHub Actions** for automated build, test, and deployment t
 **Azure Target:** ☁️  
 - Deployment target: **Azure App Service**
 
+---
+## 🔁 Branch Flow
+
+- `dev`: Active development, testing, and CI validation
+- `main`: Stable production branch, triggers full deployment
+
+Workflows:
+- `.github/workflows/test.yml`: Runs on `dev`, tests only
+- `.github/workflows/deploy.yml`: Runs on `main`, full CI/CD
 ---
 ## 🧪 API Playground (Swagger UI)
 A visual overview of all available endpoints. Fully testable via Swagger for smooth development and debugging.
