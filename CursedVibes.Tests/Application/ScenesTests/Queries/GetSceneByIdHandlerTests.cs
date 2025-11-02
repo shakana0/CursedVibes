@@ -43,5 +43,23 @@ namespace CursedVibes.Tests.Application.ScenesTests.Queries
             mapperMock.Verify(m => m.Map<SceneDto>(It.IsAny<Scene>()), Times.Once);
 
         }
+
+        [Fact]
+        public async Task Handle_GivenInvalidSceneIdQuery_ThrowsFileNotFoundException()
+        {
+            var query = new GetSceneByIdQuery("scene9999");
+
+            var handler = new GetSceneByIdHandler(_sceneRepository, new Mock<IMapper>().Object);
+
+            var exception = await Assert.ThrowsAsync<FileNotFoundException>(async () =>
+            {
+                await handler.Handle(query, CancellationToken.None);
+            });
+
+            var filePath = Path.Combine(AppContext.BaseDirectory, "Mocks", "Scenes", $"{query.SceneId}.json");
+
+            Assert.Equal($"Scene '{query.SceneId}' not found at '{filePath}'.", exception.Message);
+        }
+
     }
 }
