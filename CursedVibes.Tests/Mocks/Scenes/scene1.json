@@ -1,0 +1,37 @@
+{
+  "sceneId": "scene1",
+  "sceneType": "Intro",
+  "chapter": "Chapter 1",
+  "sceneAura": {
+    "background": "TestBackground",
+    "ambientAudio": "TestAudio",
+    "music": "TestMusic",
+    "sfx": [ "TestSfx" ]
+  },
+  "narration": [
+    "It was a quiet morning...",
+    "The sun rose slowly over the hills."
+  ],
+  "choices": [
+    {
+      "text": "Explore the forest",
+      "tone": "Test Tone",
+      "outcome": "Test OutCome",
+      "nextScene": "Test NextScene",
+      "statImpact": {
+        "health": null,
+        "curseLevel": 10,
+        "status": null,
+        "emotionalState": null,
+        "desireLevel": null,
+        "corruption": null,
+        "chatTone": null,
+        "trust": null
+      }
+    }
+  ],
+  "effects": [
+    "Birds chirping",
+    "Sunlight shimmer"
+  ]
+}
